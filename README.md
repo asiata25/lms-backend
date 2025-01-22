@@ -22,21 +22,16 @@ Follow these steps to set up the project on your local machine:
 
 1. **Clone the repository**:
    ```bash
-   git clone https://github.com/yourusername/jagobahasa-assignment.git
+   git clone https://github.com/asiata25/lms-backend.git
    ```
 
 2. **Navigate to the project directory**:
    ```bash
-   cd jagobahasa-assignment
+   cd lms-backend
    ```
 
 3. **Install dependencies**:
-   For Node.js (if applicable):
-   ```bash
-   npm install
-   ```
 
-   For PHP (Laravel):
    ```bash
    composer install
    ```
@@ -46,21 +41,36 @@ Follow these steps to set up the project on your local machine:
    - Copy the contents of `.env.example` into `.env`.
    - Update the database and other configurations as needed.
 
-5. **Run database migrations** (if applicable):
+5. **Prepare the PostgreSQL Database**:
+   - Ensure PostgreSQL is installed and running on your system.
+   - Create a new database:
+     ```bash
+     psql -U your_username -c "CREATE DATABASE jagobahasa_db;"
+     ```
+   - Update the `.env` file with your PostgreSQL credentials:
+     ```env
+     DB_CONNECTION=pgsql
+     DB_HOST=127.0.0.1
+     DB_PORT=5432
+     DB_DATABASE=jagobahasa_db
+     DB_USERNAME=your_username
+     DB_PASSWORD=your_password
+     ```
+
+6. **Run database migrations** (if applicable):
    ```bash
    php artisan migrate
    ```
 
-6. **Start the development server**:
-   - For Node.js:
-     ```bash
-     npm run dev
-     ```
-   - For Laravel:
+7. **Start the development server**:
      ```bash
      php artisan serve
      ```
 
+8. **Import Postman API Documentation**:
+   - Open Postman.
+   - Import the [postman_collection](docs/masterbagasi.postman_collection.json).
+   - Use the predefined requests to test the API endpoints.
 ---
 
 ## 📖 How to Use the App
@@ -98,26 +108,6 @@ Here is the step-by-step workflow of the app:
 
 5. **Progress Tracking**:
    - View your learning progress over time.
-
----
-
-## 📄 License
-
-This project is licensed under the [MIT License](LICENSE).
-
----
-
-## 👥 Contributing
-
-Contributions are welcome! Please fork the repository and submit a pull request with any enhancements or fixes.
-
----
-
-## 📧 Contact
-
-For any inquiries, please reach out:
-- **Email**: yourname@example.com
-- **GitHub**: [yourusername](https://github.com/yourusername)
 
 ---
 
