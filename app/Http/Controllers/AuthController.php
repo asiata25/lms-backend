@@ -2,21 +2,21 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\ApiResponse;
+use App\Http\Requests\Auth\LoginRequest;
+use App\Http\Resources\UserResource;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
-    function login(Request $request)
+    function login(LoginRequest $request)
     {
-        $validated = $request->validate([
-            'email' => ['required', 'email'],
-            'password' => ['required'],
-        ]);
+        $data = $request->validated();
 
-        $user = User::where('email', $validated['email'])->first();
-        if (!$user || !Hash::check($validated['password'], $user->password)) {
+        $user = User::where('email', $data['email'])->first();
+        if (!$user || !Hash::check($data['password'], $user->password)) {
             return response()->json([
                 'message' => 'the provided credentials are incorrect'
             ])->setStatusCode(404);
@@ -24,18 +24,16 @@ class AuthController extends Controller
 
         $token = $user->createToken($user->name, [$user->role == "instructor" ? "course:edit" : null], now()->addWeek());
 
-        return  response()->json([
-            'user' => $user,
+        return ApiResponse::ok([
+            'user' => new UserResource($user),
             'token' => $token->plainTextToken
-        ]);
+        ],);
     }
 
     function logout(Request $request)
     {
         $request->user()->tokens()->delete();
 
-        return response()->json([
-            'message' => 'successfully logged out'
-        ]);
+        return ApiResponse::ok();
     }
 }

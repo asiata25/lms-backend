@@ -19,9 +19,14 @@ class CourseResource extends JsonResource
             "description" => $this->description,
             "price" => $this->price,
             "level" => $this->level,
-            // TODO: Add relation to instructor and program
-            "instructor" => $this->instructor_id,
-            "program" => $this->program_id,
+            "instructor" => [
+                "id" => $this->instructor->id,
+                "name" => $this->instructor->name,
+            ],
+            "program" => [
+                "id" => $this->program->id,
+                "title" => $this->program->title,
+            ],
             "thumbnail" => $this->thumbnail,
         ];
     }
