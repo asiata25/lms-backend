@@ -11,4 +11,7 @@ Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth:sanc
 
 Route::get('/courses', GetAllCoursesController::class);
 
-Route::resource('/courses', CourseController::class)->middleware('auth:sanctum');
+
+Route::prefix('instructor')->middleware(['auth:sanctum'])->group(function () {
+    Route::resource('courses', CourseController::class);
+});

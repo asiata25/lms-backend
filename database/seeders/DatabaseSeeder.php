@@ -23,20 +23,20 @@ class DatabaseSeeder extends Seeder
 
         // Create user as student with different password
         User::factory()->create([
-            "email" => 'Tyreek.Kub7@yahoo.com',
+            "email" => 'student@jagobahasa.com',
             "password" => Hash::make("asdqwe123")
         ]);
         
         
         // Create user as instructor
         $instructor1 = User::factory()->instructorRole()->create([
-            "email" => 'Kody_Harber@gmail.com',
+            "email" => 'instructor01@jagobahasa.com',
             "password" => Hash::make("asdqwe123")
         ]);
         
         // Create user as instructor
         $instructor2 = User::factory()->instructorRole()->create([
-            "email" => 'Giovanna_Hoppe@gmail.com',
+            "email" => 'instructor02@jagobahasa.com',
             "password" => Hash::make("asdqwe123")
         ]);
 

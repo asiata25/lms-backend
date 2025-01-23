@@ -22,11 +22,12 @@ class AuthController extends Controller
             ])->setStatusCode(404);
         }
 
-        $token = $user->createToken($user->name, [$user->role == "instructor" ? "course:edit" : null], now()->addWeek());
+        // $token = $user->createToken($user->name, $user->role == "instructor" ? ["course:modfiy"] : [""], now()->addWeek())->plainTextToken;
+        $token = $user->createToken($user->name, $user->role == "instructor" ? ['course:update'] : [""],  now()->addWeek())->plainTextToken;
 
         return ApiResponse::ok([
             'user' => new UserResource($user),
-            'token' => $token->plainTextToken
+            'token' => $token
         ],);
     }
 

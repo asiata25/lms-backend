@@ -24,11 +24,26 @@ class CourseController extends Controller
      */
     public function store(CreateCourseRequest $request)
     {
+        $user = $request->user();
+
+        if ($user->tokenCant('course:update')) {
+            return ApiResponse::forbidden();
+        }
+
         $data = $request->validated();
 
-        $course = $request->user()->courses()->create($data);
+        $course = $user->courses()->create($data);
 
-        return ApiResponse::ok(['course' => new CourseResource($course)]);
+        $course->load(['program']);
+
+        $resourceArray = (new CourseResource($course))->toArray(request());
+
+        $resourceArray['instructor'] = [
+            'id' => $user->id,
+            'name' => $user->name,
+        ];
+
+        return ApiResponse::ok(['course' => $resourceArray]);
     }
 
     /**

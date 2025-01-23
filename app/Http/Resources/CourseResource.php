@@ -20,12 +20,12 @@ class CourseResource extends JsonResource
             "price" => $this->price,
             "level" => $this->level,
             "instructor" => [
-                "id" => $this->instructor->id,
-                "name" => $this->instructor->name,
+                "id" => $this->whenLoaded('instructor')->id ?? "",
+                "name" => $this->whenLoaded('instructor')->name ?? "",
             ],
             "program" => [
-                "id" => $this->program->id,
-                "title" => $this->program->title,
+                "id" => $this->whenLoaded('program')->id,
+                "title" => $this->whenLoaded('program')->title,
             ],
             "thumbnail" => $this->thumbnail,
         ];
