@@ -11,6 +11,8 @@ class Course extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['title', 'description', 'price', 'level', 'instructor_id', 'program_id', 'thumbnail'];
+
     public function instructor(): BelongsTo
     {
         return $this->belongsTo(User::class, 'instructor_id');
