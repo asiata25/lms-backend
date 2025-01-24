@@ -6,15 +6,8 @@
 
 This repository contains the hard skill assignment for JagoBahasa, showcasing advanced programming concepts, clean architecture, and practical implementation techniques. The app is designed to help users learn programming fundamentals through a structured and interactive workflow.
 
----
-
-## 🚀 Features
-
-- **Interactive Learning**: Engage with practical programming tasks.
-- **Modular Architecture**: Clean and maintainable codebase.
-- **Custom Workflow**: Easy-to-follow step-by-step guidance.
-
----
+### 📄 Documentation
+For completed documentation (App workflow, ERD, and Tech Stacl), please visit our [Notion page](https://lutfikhoir.notion.site/LMS-for-Course-Module-Creation-1837aba2acb780ef8905dacacb530d7c?pvs=4).
 
 ## 📥 Installation
 
@@ -71,24 +64,6 @@ Follow these steps to set up the project on your local machine:
    - Open Postman.
    - Import the [postman_collection](docs/masterbagasi.postman_collection.json).
    - Use the predefined requests to test the API endpoints.
----
-
-## 📖 How to Use the App
-
-1. **Access the App**:
-   Open your browser and navigate to the provided local server address (e.g., `http://localhost:8000`).
-
-2. **Login or Register**:
-   Create an account or log in with your credentials.
-
-3. **Explore Features**:
-   - Navigate through the app to complete assignments.
-   - Use the guided workflows for learning tasks.
-
-4. **Submit Assignments**:
-   Save or upload your work directly within the app.
-
----
 
 ## 🔄 App Workflow
 
