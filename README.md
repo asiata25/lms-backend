@@ -62,7 +62,7 @@ Follow these steps to set up the project on your local machine:
 
 8. **Import Postman API Documentation**:
    - Open Postman.
-   - Import the [postman_collection](postman_environment.json).
+   - Import the [postman_collection](docs/API%20Docs-%20LMS%20for%20Jagobahasa.postman_collection.json).
    - Use the predefined requests to test the API endpoints.
 
 ## 🔄 App Workflow
