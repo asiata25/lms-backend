@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\ApiResponse;
+use App\Http\Requests\Material\CreateMaterialRequest;
+use App\Http\Resources\MaterialCollection;
+use App\Http\Resources\MaterialResource;
 use App\Models\Course;
 use App\Models\Material;
 use Illuminate\Http\Request;
@@ -19,9 +23,28 @@ class MaterialController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(int $idCourse,Request $request)
+    public function store(int $idCourse, CreateMaterialRequest $request)
     {
-        return $idCourse;
+        $user = $request->user();
+
+        if ($user->tokenCant('course:update')) {
+            return ApiResponse::forbidden();
+        }
+
+        // Validate incoming request
+        $data = $request->validated();
+
+        // Add the course_id to the validated data
+        $course = Course::find($idCourse);
+        if (!$course) {
+            return ApiResponse::notFound('course not found');
+        }
+        $data['course_id'] = $idCourse;
+
+        // Create the material record
+        $material = Material::create($data);
+
+        return ApiResponse::created(['material' => new MaterialResource($material)]);
     }
 
     /**
