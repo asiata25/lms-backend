@@ -9,6 +9,16 @@ This repository contains the hard skill assignment for JagoBahasa, showcasing ad
 ### 📄 Documentation
 For completed documentation (App workflow, ERD, and Tech Stacl), please visit our [Notion page](https://lutfikhoir.notion.site/LMS-for-Course-Module-Creation-1837aba2acb780ef8905dacacb530d7c?pvs=4).
 
+### 🔥 Endpoints
+- ✅ Login
+- ✅ Logout
+- ✅ Get all course for public
+- ✅ Get detail course for public
+- ✅ Get all course for instructor (dashboard)
+- ✅ Get detail course for instructor
+- ✅ Post new course only for instructor user
+- ✅ Post new material only for instructor user
+
 ## 📥 Installation
 
 Follow these steps to set up the project on your local machine:
