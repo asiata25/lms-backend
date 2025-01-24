@@ -62,7 +62,7 @@ Follow these steps to set up the project on your local machine:
 
 8. **Import Postman API Documentation**:
    - Open Postman.
-   - Import the [postman_collection](docs/masterbagasi.postman_collection.json).
+   - Import the [postman_collection](postman_environment.json).
    - Use the predefined requests to test the API endpoints.
 
 ## 🔄 App Workflow
