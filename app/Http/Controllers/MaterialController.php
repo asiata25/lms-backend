@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Course;
 use App\Models\Material;
 use Illuminate\Http\Request;
 
@@ -18,9 +19,9 @@ class MaterialController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(int $idCourse,Request $request)
     {
-        //
+        return $idCourse;
     }
 
     /**

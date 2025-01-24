@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Helpers\ApiResponse;
 use App\Http\Requests\Course\CreateCourseRequest;
+use App\Http\Resources\CourseCollection;
+use App\Http\Resources\CourseDetailResource;
 use App\Http\Resources\CourseResource;
 use App\Models\Course;
 use Illuminate\Http\Request;
@@ -16,7 +18,10 @@ class CourseController extends Controller
      */
     public function index()
     {
-        //
+        $user_id = Auth::id();
+        $course = Course::where('instructor_id', $user_id)->with('program')->get();
+
+        return ApiResponse::ok(['courses' => new CourseCollection($course)]);
     }
 
     /**
@@ -43,7 +48,7 @@ class CourseController extends Controller
             'name' => $user->name,
         ];
 
-        return ApiResponse::ok(['course' => $resourceArray]);
+        return ApiResponse::created(['course' => $resourceArray]);
     }
 
     /**
@@ -51,7 +56,9 @@ class CourseController extends Controller
      */
     public function show(Course $course)
     {
-        //
+        $course = Course::where('instructor_id', Auth::id())->where('id', $course->id)->with('program', 'materials')->first();
+        
+        return ApiResponse::created(['course' => new CourseDetailResource($course)]);
     }
 
     /**

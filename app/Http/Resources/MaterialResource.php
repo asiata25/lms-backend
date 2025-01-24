@@ -19,10 +19,7 @@ class MaterialResource extends JsonResource
             "title" => $this->title,
             "title" => $this->type,
             "url" => $this->url,
-            "course" => [
-                'id' => $this->whenLoaded('course')->id,
-                'title' => $this->whenLoaded('course')->id,
-            ],
+            "course_id"=> $this->course_id,
             "thumbnail" => $this->thumbnail,
         ];;
     }

@@ -15,7 +15,6 @@ class GetAllCoursesController extends Controller
      */
     public function __invoke(Request $request)
     {
-        // return response()->json(new CourseCollection(Course::all()))->setStatusCode(200);
         return ApiResponse::ok(["courses" => new CourseCollection(Course::with('instructor', 'program')->get())]);
     }
 }
