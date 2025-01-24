@@ -17,9 +17,7 @@ class AuthController extends Controller
 
         $user = User::where('email', $data['email'])->first();
         if (!$user || !Hash::check($data['password'], $user->password)) {
-            return response()->json([
-                'message' => 'the provided credentials are incorrect'
-            ])->setStatusCode(404);
+            return ApiResponse::notFound('the provided cressssdentials are incorrect');
         }
 
         // $token = $user->createToken($user->name, $user->role == "instructor" ? ["course:modfiy"] : [""], now()->addWeek())->plainTextToken;
